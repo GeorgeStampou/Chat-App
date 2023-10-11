@@ -22,8 +22,8 @@ main{
     background-color: cornflowerblue;
     padding: 0.5%;
     display: grid;
-    grid-template-columns: 20% auto auto;
-    grid-template-rows: 10% auto 15%;
+    grid-template-columns: 18% auto auto;
+    grid-template-rows: 12% auto 15%;
 }
 
 .leave-btn{
@@ -34,7 +34,6 @@ main{
 .header-div{
     grid-column: 1 /span 3;
     display: flex;
-    align-items: center;
     padding-bottom: 1%;
 }
 
@@ -45,10 +44,10 @@ main{
 
 .messages{
     background-color: white;
+    padding: 2%;
     grid-column: 2/ span 2;
     overflow-y: auto;
 }
-
 
 .chat-form-div{
     grid-column: 1 / span 3;
@@ -65,10 +64,6 @@ main{
     width: 10%;
 }
 
-
-
-
-
 .container{
     padding: 1%;
     width: 100%;
@@ -78,6 +73,7 @@ main{
 
 h1{
     font-size: 1.4em;
+    align-self: center;
 }
 
 .join-form{
@@ -91,4 +87,22 @@ h1{
 .join-btn{
     margin-top: 2%;
     width: 25%;
+}
+
+.message-div{
+    margin-top: 1%;
+    padding: 1%;
+    background-color: rgb(223, 223, 223);
+    border-radius: 6px;
+}
+
+.message-head{
+    font-size: 0.8em;   
+    color: cornflowerblue;
+
+}
+
+button{
+    border: 1px solid;
+    
 }
