@@ -1,0 +1,94 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    list-style: none;
+    
+}
+
+main{   
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 25%;
+    height: 50%;
+}
+
+.chat-main{
+    width: 50%;
+    background-color: cornflowerblue;
+    padding: 0.5%;
+    display: grid;
+    grid-template-columns: 20% auto auto;
+    grid-template-rows: 10% auto 15%;
+}
+
+.leave-btn{
+    margin-left: auto;  
+}
+
+
+.header-div{
+    grid-column: 1 /span 3;
+    display: flex;
+    align-items: center;
+    padding-bottom: 1%;
+}
+
+.sidebar{
+    grid-column: 1/2;
+    overflow-y: auto;
+}
+
+.messages{
+    background-color: white;
+    grid-column: 2/ span 2;
+    overflow-y: auto;
+}
+
+
+.chat-form-div{
+    grid-column: 1 / span 3;
+    padding-top: 2%;
+    display: flex;
+}
+
+.chat-form-div > input{
+    width: 85%;
+}
+
+.send-btn{
+    margin-left: auto;
+    width: 10%;
+}
+
+
+
+
+
+.container{
+    padding: 1%;
+    width: 100%;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+h1{
+    font-size: 1.4em;
+}
+
+.join-form{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.join-btn{
+    margin-top: 2%;
+    width: 25%;
+}

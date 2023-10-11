@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./join-styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <title>Chat App</title>
 </head>
 <body>
     <main>
         <div class="container">
             <h1>Chat App</h1>
-            <form>
+            <form class="join-form" action="./chat.html">
                 <div class="input-div">
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text" required>
+                    <label for="username" class="username-lbl">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
                 </div>
-                <button type="submit">Join chat</button>
+                <button type="submit" class="join-btn" >Join chat</button>
             </form>
         </div>
     </main>
     
-    <script src="./join-script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
