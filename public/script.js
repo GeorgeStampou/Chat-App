@@ -1,11 +1,26 @@
-const socket = io();
 const form = document.querySelector('.chat-form-div');
 const input = document.getElementById('message');
 const messagesDiv = document.querySelector('.messages');
+const sidebarDiv = document.querySelector('.sidebar');
 
 const username = window.location.href.split('?')[1].split('=')[1];
 
+const socket = io();
+
+const showUsers = (users) => {
+    console.log(users);
+    sidebarDiv.innerHTML = '';
+    users.map(user => {
+        const li = document.createElement('li');
+        li.setAttribute('id', user.id)
+        li.innerHTML = user.username;
+        sidebarDiv.appendChild(li);
+    })    
+}
+
 socket.emit('join', username);
+
+socket.on('usersStatus', (users) => showUsers(users));
 
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -29,5 +44,9 @@ const createMessage = ({username, message, time}) => {
     messagesDiv.appendChild(div);
 }
 
-socket.on('chatMessage', ({username, message, time})=> createMessage({username, message, time}));
+socket.on('chatMessage', ({username, message, time}) => {
+    createMessage({username, message, time});
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+});
+
 

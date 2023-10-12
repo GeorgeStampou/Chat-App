@@ -2,7 +2,7 @@ require('dotenv').config();
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-const {createUser, getUser, deleteUser} = require('./data/users');
+const {createUser, getUser, deleteUser, getAllUsers} = require('./data/users');
 const {formatTime} = require('./data/time');
 
 const app = express();
@@ -13,6 +13,12 @@ const io = socketio(server);
 io.on('connection', (socket)=>{
     socket.on('join', (username) => {
         const user = createUser(socket.id, username);
+        const time = formatTime();
+        
+        socket.broadcast.emit('chatMessage', {username: 'ChatBot', message: `${user.username} joined`, time: time})
+
+        const users = getAllUsers();
+        io.emit('usersStatus', users);
     })
 
     socket.on('chatMessage', (message) => {
@@ -22,7 +28,17 @@ io.on('connection', (socket)=>{
     })
 
     socket.on('disconnect', () => {
-        console.log('a user disconnected');
+        
+        const user = deleteUser(socket.id);
+        if(user){
+            const time = formatTime();
+            socket.broadcast.emit('chatMessage', {username: 'ChatBot', message: `${user.username} left`, time: time});
+
+            const users = getAllUsers();
+            io.emit('usersStatus', users);
+        } else { 
+            console.log("user not found");
+        }
     })
 })
 
