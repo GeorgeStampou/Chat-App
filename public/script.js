@@ -36,6 +36,8 @@ const createMessage = (message) => {
     div.classList.add('message-div')
     if(message.username === 'ChatBot'){
         div.classList.add('chat-bot-div');
+    } else if(message.username === username){
+        div.classList.add('user');
     }
     const pHead = document.createElement('p');
     pHead.classList.add('message-head');
