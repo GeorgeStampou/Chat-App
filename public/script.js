@@ -1,7 +1,7 @@
 const form = document.querySelector('.chat-form-div');
 const input = document.getElementById('message');
 const messagesDiv = document.querySelector('.messages');
-const sidebarDiv = document.querySelector('.sidebar');
+const sidebarDiv = document.querySelector('.active-users');
 
 const username = window.location.href.split('?')[1].split('=')[1];
 
@@ -34,11 +34,15 @@ const createMessage = ({username, message, time}) => {
     
     const div = document.createElement('div');
     div.classList.add('message-div')
+    if(username === 'ChatBot'){
+        div.classList.add('chat-bot-div');
+    }
     const pHead = document.createElement('p');
     pHead.classList.add('message-head');
-    pHead.innerHTML = `${username}, ${time}`;
+    pHead.innerHTML = `${username}  ${time}`;
     div.appendChild(pHead);
     const p = document.createElement('p');
+    p.classList.add('message-body');
     p.innerText = message;
     div.appendChild(p);
     messagesDiv.appendChild(div);
