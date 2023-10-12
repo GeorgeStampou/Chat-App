@@ -30,26 +30,26 @@ form.addEventListener('submit', (e)=>{
     }
 })
 
-const createMessage = ({username, message, time}) => {
+const createMessage = (message) => {
     
     const div = document.createElement('div');
     div.classList.add('message-div')
-    if(username === 'ChatBot'){
+    if(message.username === 'ChatBot'){
         div.classList.add('chat-bot-div');
     }
     const pHead = document.createElement('p');
     pHead.classList.add('message-head');
-    pHead.innerHTML = `${username}  ${time}`;
+    pHead.innerHTML = `${message.username}  ${message.time}`;
     div.appendChild(pHead);
     const p = document.createElement('p');
     p.classList.add('message-body');
-    p.innerText = message;
+    p.innerText = message.content;
     div.appendChild(p);
     messagesDiv.appendChild(div);
 }
 
-socket.on('chatMessage', ({username, message, time}) => {
-    createMessage({username, message, time});
+socket.on('chatMessage', (message) => {
+    createMessage(message);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 });
 

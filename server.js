@@ -3,7 +3,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const {createUser, getUser, deleteUser, getAllUsers} = require('./data/users');
-const {formatTime} = require('./data/time');
+const {createMessage} = require('./data/message');
 
 const app = express();
 const server = http.createServer(app);
@@ -13,9 +13,9 @@ const io = socketio(server);
 io.on('connection', (socket)=>{
     socket.on('join', (username) => {
         const user = createUser(socket.id, username);
-        const time = formatTime();
+        const messageObj = createMessage('ChatBot', `${user.username} joined`);
         
-        socket.broadcast.emit('chatMessage', {username: 'ChatBot', message: `${user.username} joined`, time: time})
+        socket.broadcast.emit('chatMessage', messageObj);
 
         const users = getAllUsers();
         io.emit('usersStatus', users);
@@ -23,16 +23,16 @@ io.on('connection', (socket)=>{
 
     socket.on('chatMessage', (message) => {
         const user = getUser(socket.id);
-        const time = formatTime();
-        io.emit('chatMessage', {username: user.username, message: message, time: time});
+        const messageObj = createMessage(user.username, message);
+        io.emit('chatMessage', messageObj);
     })
 
     socket.on('disconnect', () => {
         
         const user = deleteUser(socket.id);
         if(user){
-            const time = formatTime();
-            socket.broadcast.emit('chatMessage', {username: 'ChatBot', message: `${user.username} left`, time: time});
+            const messageObj = createMessage('ChatBot', `${user.username} left`); 
+            socket.broadcast.emit('chatMessage', messageObj);
 
             const users = getAllUsers();
             io.emit('usersStatus', users);
