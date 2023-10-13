@@ -1,7 +1,9 @@
 :root{
     --main-color: #49ace6;
-    --main-color-dark: #429bcf;
-    --message-back-color: #e2e2e2;
+    --main-color-dark: #3a8ab8;
+    --message-grey-color: #e2e2e2;
+    --message-grey-color-dark: #717171;
+    --message-grey-color-light: #ededed;
 
 }
 
@@ -99,32 +101,33 @@ h1{
 .message-div{
     margin-top: 1%;
     padding: 0.5% 1% 0.5% 1%;
-    background-color: var(--message-back-color);
+    background-color: var(--message-grey-color);
     border-radius: 6px;
-    width: 80%;
+    width: fit-content;
+    max-width: 80%;
     margin-left: 0;
     margin-right: auto;
 }
 
 .message-div.user{
     background-color: var(--main-color);
-    width: 80%;
+    /* width: 80%; */
     margin-left: auto;
     margin-right: 0;
-}
-
-.message-div.user > .message-head{
-    color: black;
-}
-
-.message-div:first-child{
-    margin-top: 0%;
 }
 
 .message-head{
     font-size: 0.8em;   
     color: var(--main-color-dark);
 
+}
+
+.message-div.user > .message-head{
+    color: var(--message-grey-color-light);
+}
+
+.message-div:first-child{
+    margin-top: 0%;
 }
 
 button{
@@ -138,7 +141,10 @@ button:hover{
 .chat-bot-div{
     text-align: center;
     background-color: white;
-    color: #9c9c9c;
+    color: var(--message-grey-color-dark);
+    /* max-width: 100%; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .chat-bot-div > .message-body{
