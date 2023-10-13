@@ -4,7 +4,6 @@
     --message-grey-color: #e2e2e2;
     --message-grey-color-dark: #717171;
     --message-grey-color-light: #ededed;
-
 }
 
 
@@ -15,7 +14,6 @@
     border: 0;
     font-size: 100%;
     list-style: none;
-    
 }
 
 main{   
@@ -111,7 +109,6 @@ h1{
 
 .message-div.user{
     background-color: var(--main-color);
-    /* width: 80%; */
     margin-left: auto;
     margin-right: 0;
 }
@@ -119,7 +116,6 @@ h1{
 .message-head{
     font-size: 0.8em;   
     color: var(--main-color-dark);
-
 }
 
 .message-div.user > .message-head{
@@ -142,7 +138,6 @@ button:hover{
     text-align: center;
     background-color: white;
     color: var(--message-grey-color-dark);
-    /* max-width: 100%; */
     margin-left: auto;
     margin-right: auto;
 }
